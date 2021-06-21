@@ -1,32 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
+import { render } from 'react-dom';
+import './style.css';
 
-class Table extends Component {
-  render() {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Nama</th>
-            <th>Pekerjaan</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Andi</td>
-            <td>Dokter</td>
-          </tr>
-          <tr>
-            <td>Bela</td>
-            <td>Wiraswasta</td>
-          </tr>
-          <tr>
-            <td>Clara</td>s
-            <td>Karyawan Bank</td>
-          </tr>
-        </tbody>
-      </table>
-    )
-  }
+const App = () => {
+
+  const [addrtype, setAddrtype] = useState(["Working", "Home", "school"])
+  const Add = addrtype.map(Add => Add
+  )
+  const handleAddrTypeChange = (e) => {console.clear(), console.log((addrtype[e.target.value]))}
+
+  return (
+    < select
+      onChange={e => handleAddrTypeChange(e)}
+      className="browser-default custom-select" >
+      {
+        Add.map((address, key) => <option key={key}value={key}>{address}</option>)
+      }
+    </select >)
+
+
 }
 
-export default Table
+render(<App />, document.getElementById('root'));
